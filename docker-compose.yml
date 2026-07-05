@@ -1,0 +1,18 @@
+
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      # Monta o diretório atual (onde estão os arquivos .joblib) no diretório de trabalho do container
+      - .:/app
+    environment:
+      # Variáveis de ambiente, se houver necessidade futura
+      # - SOME_VAR=some_value
+    # Garante que a API reinicie se falhar
+    restart: always
